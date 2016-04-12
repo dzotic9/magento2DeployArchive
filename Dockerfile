@@ -9,3 +9,5 @@ RUN wget "https://github.com/dzotic9/magento2nginxphp/blob/master/archive.zip?ra
 RUN yum -y install ftp://ftp.muug.mb.ca/mirror/fedora/epel/7/x86_64/l/libtidy-0.99.0-31.20091203.el7.x86_64.rpm;
 RUN yum -y install ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/mkubecek:/firebird30:/ipv6/SLE_11_SP3/x86_64/libfbclient2-3.0.0.30573-11.1.x86_64.rpm;
 RUN sed -i 's|;extension=intl.so|extension=intl.so|g' /etc/php.ini;
+RUN sed -i 's|;extension=memcache.so|extension=memcache.so|g' /etc/php.ini;
+RUN sed -i 's|;extension=reids.so|extension=redis.so|g' /etc/php.ini;
