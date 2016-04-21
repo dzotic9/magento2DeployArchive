@@ -21,8 +21,6 @@ RUN sed -i 's|.*extension=mysql.so|;extension=mysql.so|g' /etc/php.ini;
 RUN sed -i 's|.*extension=mysqlnd_ms.so|extension=mysqlnd_ms.so\nmysqlnd_ms.multi_master = 1|g' /etc/php.ini;
 RUN sed -i 's|.*mysqlnd_ms.enable = 1|mysqlnd_ms.enable = 1|g' /etc/php.ini;
 RUN sed -i 's|.*mysqlnd_ms.config_file.*|mysqlnd_ms.config_file=/var/lib/jelastic/mysqlnd_ms.json|g' /etc/php.ini;
-
-ROM jelastic/magento2-nginxphp
 RUN curl -fsSL "https://download.jelastic.com/public.php?service=files&t=75aac0f89e53f018fc0aedd5687ec868&download" -o /var/lib/jelastic/mysqlnd_ms.json;
 RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf2;\
         curl -fsSL "https://download.jelastic.com/public.php?service=files&t=26dba40e5d349cc93aa831fec342a3eb&download" -o /etc/nginx/nginx.conf;
