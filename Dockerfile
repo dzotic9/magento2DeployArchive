@@ -24,5 +24,8 @@ RUN sed -i 's|.*mysqlnd_ms.config_file.*|mysqlnd_ms.config_file=/var/lib/jelasti
 RUN curl -fsSL "https://download.jelastic.com/public.php?service=files&t=75aac0f89e53f018fc0aedd5687ec868&download" -o /var/lib/jelastic/mysqlnd_ms.json;
 RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf2;\
         curl -fsSL "https://download.jelastic.com/public.php?service=files&t=26dba40e5d349cc93aa831fec342a3eb&download" -o /etc/nginx/nginx.conf;
+RUN sed -i 's|pm = dynamic|pm = ondemand|g' /etc/php-fpm.conf;\
+        sed -i 's|pm.max_children = 50|pm.max_children = 16\npm.process_idle_timeout = 60s|g' /etc/php-fpm.conf;\
+        sed -i 's|; Jelastic autoconfiguration mark||g' /etc/php-fpm.conf;
 RUN sed -i 's|.*extension=xsl.so|;extension=xsl.so|g' /etc/php.ini;
 RUN sed -i 's|.*extension=gd.so|;extension=gd.so|g' /etc/php.ini;
